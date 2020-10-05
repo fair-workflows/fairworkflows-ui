@@ -1,0 +1,25 @@
+{# This simple template derives from ``base.html``. See ``base.html`` for
+   more information about template inheritance. #}
+{%- extends "base.html" %}
+
+
+{# Inside the ``content`` is where you should place most of your own stuff.
+   This will keep scripts at the page end and a navbar you add on later
+   intact. #}
+{% block content %}
+
+    <div class="container">
+        <div class="jumbotron">
+            <div class="bg-light-gray">
+                <h2>Create a new workflow</h2>
+                <p>
+                    <form action="http://localhost:5000/" method="post">
+                <p>Description:</p>
+                <p><input type="text" name="workflow_description"/></p>
+                <p><input name='create_workflow' class="btn btn-sm btn-default" type="submit" value="Create workflow"/></p>
+                </p>
+            </div>
+        </div>
+
+    </div>
+{%- endblock %}

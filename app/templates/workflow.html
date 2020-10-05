@@ -1,0 +1,52 @@
+{# This simple template derives from ``base.html``. See ``base.html`` for
+   more information about template inheritance. #}
+{%- extends "base.html" %}
+
+
+{# Inside the ``content`` is where you should place most of your own stuff.
+   This will keep scripts at the page end and a navbar you add on later
+   intact. #}
+{% block content %}
+
+    <div class="container">
+        <div class="jumbotron">
+            <div class="bg-light-gray">
+                <h3>Add step to workflow</h3>
+                <p>Add a step by passing its URI. You can check the box to
+                   fetch the step RDF from a nanopub publication. Here are some
+                   example nanopub fair steps:
+                </p>
+              <ul>
+                  <li>http://purl.org/np/RACLlhNijmCk4AX_2PuoBPHKfY1T6jieGaUPVFv-fWCAg#step</li>
+                  <li>http://purl.org/np/RANBLu3UN2ngnjY5Hzrn7S5GpqFdz8_BBy92bDlt991X4#step</li>
+                  <li>http://purl.org/np/RA5D8NzM2OXPZAWNlADQ8hZdVu1k0HnmVmgl20apjhU8M#step</li>
+              </ul>
+              <p>
+                  <form action="http://localhost:5000/workflow" method="post">
+                  <p>Step URI: <input type="text" name="step_uri"/></p>
+                  <p><input type="checkbox" name="from_nanopub" value="checked">Fetch step from nanopub</p>
+                  <p><input name='add_step' class="btn btn-sm btn-default" type="submit" value="Add step"/></p>
+              </p>
+            </div>
+        </div>
+
+        <div class="jumbotron bg-white">
+            <div class="bg-white">
+              <h3>Visualization of RDF:</h3>
+              <img src="{{ image_path }}" alt="Workflow RDF visualization">
+            </div>
+        </div>
+
+        <div class="jumbotron bg-light-gray">
+            <div>
+              <h3>Individual steps:</h3>
+              <ul>
+                {% for step in workflow %}
+                    <li> {{ step }} </li>
+                {% endfor %}
+              </ul>
+            </div>
+        </div>
+
+    </div>
+{%- endblock %}
