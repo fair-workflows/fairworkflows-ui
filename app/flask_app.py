@@ -35,7 +35,7 @@ def create_app():
         ts = time.time()
         filepath = 'static/cache/dag' + str(int(ts))
         cache['filepath'] = filepath + '.dot.png'
-        workflow.draw('fairworkflows-ui/' + filepath)
+        workflow.draw('app/' + filepath)
 
     @app.route("/workflow", methods=['GET', 'POST'])
     def workflow():
