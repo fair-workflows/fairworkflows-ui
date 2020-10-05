@@ -1,0 +1,32 @@
+{# This simple template derives from ``base.html``. See ``base.html`` for
+   more information about template inheritance. #}
+{%- extends "base.html" %}
+
+
+{# Inside the ``content`` is where you should place most of your own stuff.
+   This will keep scripts at the page end and a navbar you add on later
+   intact. #}
+{% block content %}
+
+    <div class="container">
+        <div class="jumbotron">
+            <div class="bg-light-gray">
+                <h2>Add step to workflow</h2>
+                <p>
+                    <form action="http://localhost:5000/workflow" method="post">
+                <p>Step URI:</p>
+                <p><input type="text" name="step_uri"/></p>
+                <p><input name='add_step' class="btn btn-sm btn-default" type="submit" value="Add step"/></p>
+                </p>
+            </div>
+        </div>
+
+        <div class="jumbotron bg-white">
+            <div class="bg-white">
+              <h2>Visualization of RDF</h2>
+              <img src="{{ image_path }}" alt="Workflow RDF visualization">
+            </div>
+        </div>
+
+    </div>
+{%- endblock %}
