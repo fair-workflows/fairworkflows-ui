@@ -49,9 +49,17 @@ def create_app():
             workflow.add(step)
             update_visualization()
             return redirect('/workflow')
+        if 'publish' in request.form:
+            publication_info = cache['workflow'].publish_as_nanopub()
+            nanopub_uri = publication_info.get('nanopub_uri')
+            if nanopub_uri is None:
+                print('Failed to publish to nanopub')
+            cache['nanopub_uri'] = nanopub_uri
+
         return render_template('workflow.html',
                                workflow=cache.get('workflow'),
-                               image_path=cache.get('filepath'))
+                               image_path=cache.get('filepath'),
+                               nanopub_uri=cache.get('nanopub_uri'))
     return app
 
 

@@ -9,6 +9,18 @@
 {% block content %}
 
     <div class="container">
+        <div class="bg-gray">
+            <p>
+                <form class="form-inline" action="http://localhost:5000/workflow" method="post">
+                <p><input name='publish' class="btn b-tn-sm btn-primary" type="submit" value="Publish workflow to nanopub"/></p>
+                {% if nanopub_uri%}
+                    <p> Published to: <a href={{nanopub_uri}}>{{nanopub_uri}}</a></p>
+                {% else %}
+                    <p> Not published as nanopub</p>
+                {% endif %}
+            </p>
+        </div>
+
         <div class="jumbotron">
             <div class="bg-light-gray">
                 <h3>Add step to workflow</h3>
